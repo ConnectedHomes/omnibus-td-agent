@@ -205,7 +205,7 @@
       "described_version": "9.3.5"
     },
     "fluentd": {
-      "locked_version": "85d51905accfce7158470f3e4ab99641a4cfd5e9",
+      "locked_version": "73dbe4b75a26e7931b3bf9c6b51608d19cb52a4e",
       "locked_source": {
         "git": "https://github.com/fluent/fluentd.git"
       },
@@ -258,5 +258,5 @@
     }
   },
   "build_version": "0.0.0",
-  "build_git_revision": "6dbb77ab77a10f3a424892f4cceed3dc0296549f"
+  "build_git_revision": "d83ed45e16d93fc13b42394890b8808e9af414dd"
 }
