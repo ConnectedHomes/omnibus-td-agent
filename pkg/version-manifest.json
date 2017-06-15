@@ -257,6 +257,6 @@
       "described_version": "0.0.1"
     }
   },
-  "build_version": "6.6.7",
-  "build_git_revision": "28c8a279a65ae2345c620848d46b2aa3062d7466"
+  "build_version": "0.0.0",
+  "build_git_revision": "39170332c0a85659bf4f9cd0abb66e40de737365"
 }
