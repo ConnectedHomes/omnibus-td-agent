@@ -1,0 +1,15 @@
+{
+  "basename": "td-agent_0.0.0-20_amd64.deb",
+  "md5": "4ca5eb8189d8d7d053cef305eaf813e9",
+  "sha1": "3510e914e3470e73dae953b6f87ef2704670f626",
+  "sha256": "5b1eb36a0edf2c9f2d15618f417242270d52d8accd4d9eee8b82f904b0df59ba",
+  "sha512": "44c235bd8d6925d7fc67fef5512d9eba9caeb6f72d71535d283d6d6cb3480727b31eb25a788097d806e4ecda80148b6b4a640a515fa0f203c61d816a49321fbe",
+  "platform": "ubuntu",
+  "platform_version": "14.04",
+  "arch": "x86_64",
+  "name": "td-agent",
+  "friendly_name": "Td-agent",
+  "homepage": "http://treasuredata.com",
+  "version": "0.0.0",
+  "iteration": 20
+}
