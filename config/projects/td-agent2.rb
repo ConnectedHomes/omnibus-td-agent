@@ -9,7 +9,7 @@ description "Treasure Agent: A data collector for Treasure Data"
 
 install_dir     "/opt/td-agent"
 build_version   "0.0.0"
-build_iteration 26
+build_iteration 27
 
 # creates required build directories
 dependency "preparation"
