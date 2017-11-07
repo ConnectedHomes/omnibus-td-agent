@@ -205,12 +205,12 @@
       "described_version": "9.3.5"
     },
     "fluentd": {
-      "locked_version": "155ceac05146aea15124917a8bf16f2be0a9937a",
+      "locked_version": "9752b76e316f89ddd6c86f64d75b82a85a3d620d",
       "locked_source": {
         "git": "https://github.com/fluent/fluentd.git"
       },
       "source_type": "git",
-      "described_version": "v0.14.16"
+      "described_version": "v0.14.22"
     },
     "td-agent": {
       "locked_version": null,
@@ -258,5 +258,5 @@
     }
   },
   "build_version": "0.0.0",
-  "build_git_revision": "da0762be3cd480b0d7251b53a06b8e08ee21a97c"
+  "build_git_revision": "867344ce670b766cb5d2a65dea4ddbb54940c635"
 }
