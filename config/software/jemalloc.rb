@@ -8,7 +8,7 @@ version("3.6.0") { source :md5 => 'e76665b63a8fddf4c9f26d2fa67afdf2' }
 # On Mac, this file blocks package building at health check so add to whitelist
 whitelist_file "libjemalloc\.1\.dylib"
 
-source :url => "https://github.com/jemalloc/jemalloc/archive/#{version}.tar.bz2"
+source :url => "https://github.com/jemalloc/jemalloc/releases/download/#{version}/jemalloc-#{version}.tar.bz2"
 relative_path "jemalloc-#{version}"
 
 env = with_standard_compiler_flags(with_embedded_path)
