@@ -1,10 +1,17 @@
 # BGCH Local Notes
 
-This package includes custom builds of the `fluent-plugin-cloudwatch` and `fluent-plugin-elasticsearch` gems. This is necessary due to inactive upstream maintainers. Hence, the build artefacts have all been committed, against common convention.
-
-* *fluent-plugin-cloudwatch*: has additional work from [this source](https://github.com/sampointer/fluent-plugin-cloudwatch-logs/commits/master) added, which includes a 3rd parties changes to support various small fixes and ms timestamp resolution. It also includes my (Sam Pointer) changes to allow cross-account IAM authentication via AWS STS. PRs for this work remain in upstream [here](https://github.com/ryotarai/fluent-plugin-cloudwatch-logs/pull/55) and [here](https://github.com/ryotarai/fluent-plugin-cloudwatch-logs/pull/56).
-
-* *fluent-plugin-elasticsearch*: is built from [this fork](https://github.com/uken/fluent-plugin-elasticsearch/pull/223/files)
+## Building
+1. Have Docker and be in the root of this repostory
+1. Amend `config/project/td-agent2.rb` file `build_*` variables to the those you wish the build artifact to have.
+1. `docker build -t td-agent .`
+1. Note the ID of the image that is the final output of the build process
+1. `docker ps -a | grep ${image}` and note the identifier of the container that last run that image
+1. `docker cp ${container}:/pkg/td-agent_6.7.0-1_amd64.deb ./pkg`
+1. **Test this version extensively on both the CLS edge and client machines**
+1. Upload the package to the repository du jour
+1. Tag this repository with the semver version of the package you have built.
+1. From your test project's Puppet repository generate a patch using `bin/downstream` in the usual manner and submit that to `puppet-root` for general distribution.
+1. Once accepted and in general circulation tag this repository with `current_package`
 
 # About
 
@@ -211,7 +218,7 @@ ruby 2.1.3p242 (2014-09-19 revision 47630) [x86_64-darwin13.0]
 Vagrant syncs current directory in each platform. Downloaded gems are also installed automatically.
 
 And you should not use `rbenv local` in project root because Ruby environment is built on top of rbenv in Vagrant.
-So if you set different Ruby verion in `.ruby-version`, running ruby code will fail during pacakging process. 
+So if you set different Ruby verion in `.ruby-version`, running ruby code will fail during pacakging process.
 
 ## Kitchen-based Build Environment
 
