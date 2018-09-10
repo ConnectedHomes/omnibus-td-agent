@@ -1,0 +1,35 @@
+version: 0.2
+
+#env:
+  #variables:
+     # key: "value"
+     # key: "value"
+  #parameter-store:
+     # key: "value"
+     # key: "value"
+
+phases:
+  build:
+    commands:
+      - docker build . --no-cache
+      # - command
+    #finally:
+      # - command
+      # - command
+  post_build:
+    commands:
+      # - command
+    #finally:
+      # - command
+      # - command
+#artifacts:
+  #files:
+    # - location
+    # - location
+    # - name
+  #discard-paths: yes
+  #base-directory: location
+#cache:
+  #paths:
+    # - path
+    # - path
