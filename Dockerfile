@@ -34,4 +34,4 @@ RUN ["bin/omnibus", "build", "td-agent2"]
 # Produce the runtime container
 FROM ubuntu:latest
 COPY --from=build pkg/td-agent*.deb ./
-RUN ["cd ./ && ls td-agent*.deb | head -1 | xargs dpkg -i"]
+RUN cd ./ && ls td-agent*.deb | head -1 | xargs dpkg -i
