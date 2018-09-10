@@ -1,9 +1,9 @@
 version: 0.2
 
-#env:
-  #variables:
-     # key: "value"
-     # key: "value"
+env:
+  variables:
+     TD_BUILD_VERSION: "6.10.0"
+     TD_BUILD_ITERATION: "1"
   #parameter-store:
      # key: "value"
      # key: "value"
@@ -13,8 +13,8 @@ phases:
     commands:
       - docker build . --no-cache
       # - command
-    #finally:
-      # - command
+    finally:
+      - docker tag td-agent:$TD_BUILD_VERSION-$TD_BUILD_ITERATION
       # - command
   post_build:
     commands:
