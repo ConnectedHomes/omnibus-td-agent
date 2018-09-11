@@ -8,16 +8,20 @@ env:
      # key: "value"
 
 phases:
+  pre_build:
+    commands:
+      - $(aws ecr get-login --no-include-email --region eu-west-1)
   build:
     commands:
       - env
-      - docker build . --no-cache
-      - docker tag td-agent:latest
+      - docker build . --no-cache -t td-agent
+      - docker tag td-agent:latest 168686814235.dkr.ecr.eu-west-1.amazonaws.com/td-agent:latest
       # - command
     finally:
       # - command
   post_build:
     commands:
+      - docker push 168686814235.dkr.ecr.eu-west-1.amazonaws.com/td-agent:latest
       # - command
     #finally:
       # - command
