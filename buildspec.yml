@@ -12,7 +12,7 @@ phases:
     commands:
       - env
       - docker build . --no-cache
-      - docker tag td-agent:$TD_BUILD_VERSION-$TD_BUILD_ITERATION
+      - docker tag td-agent:latest
       # - command
     finally:
       # - command
