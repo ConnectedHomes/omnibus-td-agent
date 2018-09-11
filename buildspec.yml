@@ -2,6 +2,7 @@ version: 0.2
 
 env:
   variables:
+    LANG: "C.UTF-8"
     TD_BUILD_VERSION: "6.10.0"
     TD_BUILD_ITERATION: "1"
   #parameter-store:
@@ -12,9 +13,9 @@ phases:
   build:
     commands:
       - docker build . --no-cache
+      - docker tag td-agent:$TD_BUILD_VERSION-$TD_BUILD_ITERATION
       # - command
     finally:
-      - docker tag td-agent:$TD_BUILD_VERSION-$TD_BUILD_ITERATION
       # - command
   post_build:
     commands:
