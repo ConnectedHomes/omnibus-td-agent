@@ -3,8 +3,6 @@ version: 0.2
 env:
   variables:
     LANG: "C.UTF-8"
-    TD_BUILD_VERSION: "6.10.0"
-    TD_BUILD_ITERATION: "1"
   #parameter-store:
      # key: "value"
      # key: "value"
