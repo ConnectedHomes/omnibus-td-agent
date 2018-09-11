@@ -2,8 +2,8 @@ version: 0.2
 
 env:
   variables:
-     TD_BUILD_VERSION: "6.10.0"
-     TD_BUILD_ITERATION: "1"
+    TD_BUILD_VERSION: "6.10.0"
+    TD_BUILD_ITERATION: "1"
   #parameter-store:
      # key: "value"
      # key: "value"
