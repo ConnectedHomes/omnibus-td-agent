@@ -38,6 +38,7 @@ RUN bin/omnibus build td-agent2
 FROM ubuntu:latest AS install
 COPY --from=build pkg/td-agent*.deb ./
 RUN cd ./ && ls td-agent*.deb | head -1 | xargs dpkg -i
+RUN rm /etc/td-agent/td-agent.conf
 RUN rm -rf ./td-agent*.deb
 
 # Produce the runtime container
