@@ -3,7 +3,6 @@
 # work correctly for ruby 2.3
 FROM ubuntu:xenial AS build
 
-RUN mkdir build
 RUN /usr/sbin/useradd td-agent
 RUN /bin/mkdir /opt/td-agent /var/cache/omnibus
 RUN /bin/chown td-agent:td-agent /opt/td-agent /var/cache/omnibus
@@ -27,13 +26,12 @@ RUN /usr/bin/apt-get install build-essential -y
 RUN /usr/bin/apt-get install autoconf -y
 RUN /usr/bin/gem install bundler --no-rdoc --no-ri
 
-COPY . ./build
+COPY . .
 
-RUN cd build; bundle install --binstubs
-RUN cd build; bin/gem_downloader core_gems.rb
-RUN cd build; bin/gem_downloader plugin_gems.rb
-RUN cd build; bin/omnibus build td-agent2
-RUN rm -rf ./build
+RUN bundle install --binstubs
+RUN bin/gem_downloader core_gems.rb
+RUN bin/gem_downloader plugin_gems.rb
+RUN bin/omnibus build td-agent2
 
 # Produce the interim installation container. We use 'latest' to install and
 # run since that's half of the point of this exercise.
