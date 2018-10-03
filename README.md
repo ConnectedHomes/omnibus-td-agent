@@ -3,10 +3,11 @@
 ## Building
 1. Have Docker and be in the root of this repostory
 1. Amend `config/project/td-agent2.rb` file `build_*` variables to the those you wish the build artifact to have.
-1. `docker build -t td-agent .`
-1. Note the ID of the image that is the final output of the build process
-1. `docker ps -a | grep ${image}` and note the identifier of the container that last run that image
-1. `docker cp ${container}:/pkg/td-agent_6.7.0-1_amd64.deb ./pkg`
+1. `docker build --target build -t td-agent .`
+1. Determine the checksum of the built image: `docker images | grep -i td-agent`
+1. Start a container from this image: `docker run -it ${image} /bin/bash`
+1. Determine the name of the runing container: `docker ps`
+1. `docker cp ${container_id}:/pkg/td-agent_6.7.0-1_amd64.deb ./pkg`
 1. **Test this version extensively on both the CLS edge and client machines**
 1. Upload the package to the repository du jour
 1. Tag this repository with the semver version of the package you have built.
