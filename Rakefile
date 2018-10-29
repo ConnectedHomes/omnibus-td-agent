@@ -47,6 +47,7 @@ namespace :hive do
 
   desc "Build an image for a specific stack"
   task :build, [:stack_ident] => [:buildbase] do |task,args|
+    puts "Building image for #{args[:stack_ident]}"
     product, environment = get_stack_ident_parts(args[:stack_ident])
 
     # Create a bespoke configuration for this stack_ident
@@ -65,6 +66,7 @@ namespace :hive do
 
   desc "Build the base image"
   task :buildbase do |task|
+    puts "Building base image"
     sh "docker build . -f Dockerfile.base --no-cache -t td-agent"
     sh "docker tag td-agent:latest 728193454066.dkr.ecr.eu-west-1.amazonaws.com/td-agent:latest"
     sh "docker push 728193454066.dkr.ecr.eu-west-1.amazonaws.com/td-agent:latest"
