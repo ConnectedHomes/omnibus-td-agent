@@ -23,3 +23,51 @@ namespace :spec do
     end
   end
 end
+
+def get_stack_ident_parts(ident)
+  return ident.split('-')
+end
+
+namespace :hive do
+  stacks = %w(
+    cb-dev
+    cb-prod
+    cb-usprod
+    customersystems-dev
+    hcam-dev
+    hcam-prod
+    hiveleak-dev
+    hiveleak-prod
+    honeycomb-beta
+    honeycomb-dev
+    honeycomb-prod
+    honeycomb-staging
+    ops-prod
+  )
+
+  desc "Build an image for a specific stack"
+  task :build, [:stack_ident] => [:buildbase] do |task,args|
+    product, environment = get_stack_ident_parts(args[:stack_ident])
+
+    # Create a bespoke configuration for this stack_ident
+    # TODO: All of it.
+
+    # Produce a bespoke container image for that product and environment
+    sh "docker build . -f Dockerfile.configured --build-arg PRODUCT=#{product} --build-arg ENVIRONMENT=#{environment} -t td-agent:#{product}.#{environment}"
+    sh "docker tag td-agent:#{product}.#{environment} 728193454066.dkr.ecr.eu-west-1.amazonaws.com/td-agent:#{product}.#{environment}"
+    sh "docker push 728193454066.dkr.ecr.eu-west-1.amazonaws.com/td-agent:#{product}.#{environment}"
+  end
+
+  desc "Build an image for all stacks"
+  task :buildall do |task|
+    stacks.each { |s| task(:build).invoke(s) }
+  end
+
+  desc "Build the base image"
+  task :buildbase do |task|
+    sh "docker build . -f Dockerfile.base --no-cache -t td-agent"
+    sh "docker tag td-agent:latest 728193454066.dkr.ecr.eu-west-1.amazonaws.com/td-agent:latest"
+    sh "docker push 728193454066.dkr.ecr.eu-west-1.amazonaws.com/td-agent:latest"
+  end
+end
+

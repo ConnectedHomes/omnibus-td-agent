@@ -10,18 +10,27 @@ env:
 phases:
   pre_build:
     commands:
+      # Install an environment suitable for running rake
+      - /usr/bin/apt-get update
+      - /usr/bin/apt-get install software-properties-common -y
+      - apt-add-repository ppa:brightbox/ruby-ng -y
+      - apt-get update
+      - apt-get install ruby2.3 --yes
+      - apt-get install ruby2.3-dev --yes
+      - apt-get install ruby-switch --yes
+      - /usr/bin/ruby-switch --set ruby2.3
+      - /usr/bin/gem install bundler --no-rdoc --no-ri
+      - bundle install
+      # Get a login
       - $(aws ecr get-login --no-include-email --region eu-west-1)
   build:
     commands:
-      - env
-      - docker build . -f Dockerfile.base --no-cache -t td-agent
-      - docker tag td-agent:latest 728193454066.dkr.ecr.eu-west-1.amazonaws.com/td-agent:latest
+      - bundle exec rake hive:buildall
       # - command
     finally:
       # - command
   post_build:
     commands:
-      - docker push 728193454066.dkr.ecr.eu-west-1.amazonaws.com/td-agent:latest
       # - command
     #finally:
       # - command

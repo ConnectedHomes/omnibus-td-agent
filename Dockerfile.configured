@@ -1,0 +1,4 @@
+# Build the bespokely configured image from the base image
+FROM 728193454066.dkr.ecr.eu-west-1.amazonaws.com/td-agent:latest AS base
+
+# TODO: copy in the constructed configuration
