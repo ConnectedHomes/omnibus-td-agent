@@ -19,7 +19,8 @@ phases:
       - apt-get install ruby2.3-dev --yes
       - apt-get install ruby-switch --yes
       - /usr/bin/ruby-switch --set ruby2.3
-      - /usr/bin/gem install rake --no-rdoc --no-ri
+      - /usr/bin/gem install bundler --no-rdoc --no-ri
+      - bundle install --with=test --without=default
       # Get a login
       - $(aws ecr get-login --no-include-email --region eu-west-1)
   build:
