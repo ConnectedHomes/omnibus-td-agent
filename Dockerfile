@@ -41,6 +41,6 @@ RUN cd ./ && ls td-agent*.deb | head -1 | xargs dpkg -i
 RUN rm /etc/td-agent/td-agent.conf
 RUN rm -rf ./td-agent*.deb
 
-# Produce the runtime container
+# Produce the base runtime container
 FROM install
 # TODO: add CMD or ENTRYPOINT statement here
