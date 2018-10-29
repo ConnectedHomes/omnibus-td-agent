@@ -24,7 +24,7 @@ phases:
       - $(aws ecr get-login --no-include-email --region eu-west-1)
   build:
     commands:
-      - bundle exec rake hive:buildall
+      - rake hive:buildall
       # - command
     finally:
       # - command
