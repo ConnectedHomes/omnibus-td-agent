@@ -29,21 +29,6 @@ def get_stack_ident_parts(ident)
 end
 
 namespace :hive do
-  stacks = %w(
-    cb-dev
-    cb-prod
-    cb-usprod
-    customersystems-dev
-    hcam-dev
-    hcam-prod
-    hiveleak-dev
-    hiveleak-prod
-    honeycomb-beta
-    honeycomb-dev
-    honeycomb-prod
-    honeycomb-staging
-    ops-prod
-  )
 
   desc "Build an image for a specific stack"
   task :build, [:stack_ident] => [:buildbase] do |task,args|
@@ -61,7 +46,22 @@ namespace :hive do
 
   desc "Build an image for all stacks"
   task :buildall do |task|
-    stacks.each { |s| task(:build).invoke(s) }
+  stacks = %w(
+    cb-dev
+    cb-prod
+    cb-usprod
+    customersystems-dev
+    hcam-dev
+    hcam-prod
+    hiveleak-dev
+    hiveleak-prod
+    honeycomb-beta
+    honeycomb-dev
+    honeycomb-prod
+    honeycomb-staging
+    ops-prod
+  )
+    stacks.each { |s| Rake::Task["hive:build"].invoke(s) }
   end
 
   desc "Build the base image"
