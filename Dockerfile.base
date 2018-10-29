@@ -28,7 +28,7 @@ RUN /usr/bin/gem install bundler --no-rdoc --no-ri
 
 COPY . .
 
-RUN bundle install --binstubs
+RUN bundle install --binstubs --with=default
 RUN bin/gem_downloader core_gems.rb
 RUN bin/gem_downloader plugin_gems.rb
 RUN bin/omnibus build td-agent2
