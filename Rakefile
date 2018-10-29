@@ -61,7 +61,10 @@ namespace :hive do
     honeycomb-staging
     ops-prod
   )
-    stacks.each { |s| Rake::Task["hive:build"].execute(s) }
+    stacks.each do |stack|
+      Rake::Task['hive:build'].reenable
+      Rake::Task['hive:build'].invoke(stack)
+    end
   end
 
   desc "Build the base image"
